@@ -5,12 +5,6 @@ RUN apt-get update && apt-get install -y ffmpeg python3-pip \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Google Cloud CLI
-RUN apt-get update && apt-get install -y curl gnupg \
-    && curl -sSL https://sdk.cloud.google.com | bash \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
 # Install Python dependencies
 RUN pip install --upgrade pip --no-cache-dir
 RUN pip install torch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1 --index-url https://download.pytorch.org/whl/cu124 --no-cache-dir

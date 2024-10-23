@@ -5,7 +5,7 @@
         "runnables": [
           {
             "container": {
-              "imageUri": "us-central1-docker.pkg.dev/azure-openai-test/gpu-containers/cloud-run-whisper@sha256:c346f19523ccf6f1e647f6716ac3b4093a259739147d80851ce0804a7ecc5aa7"
+              "imageUri": "us-central1-docker.pkg.dev/azure-openai-test/gpu-containers/cloud-run-whisper@latest"
             }
           }
         ],
