@@ -1,0 +1,52 @@
+{
+  "taskGroups": [
+    {
+      "taskSpec": {
+        "runnables": [
+          {
+            "container": {
+              "imageUri": "us-central1-docker.pkg.dev/azure-openai-test/gpu-containers/cloud-run-whisper@sha256:c346f19523ccf6f1e647f6716ac3b4093a259739147d80851ce0804a7ecc5aa7"
+            }
+          }
+        ],
+        "computeResource": {
+          "cpuMilli": "4000",
+          "memoryMib": "16000"
+        },
+        "maxRetryCount": 0,
+        "maxRunDuration": "600s"
+      },
+      "taskCount": 1,
+      "parallelism": 1
+    }
+  ],
+  "allocationPolicy": {
+    "instances": [
+      {
+        "installGpuDrivers": true,
+        "policy": {
+          "machineType": "g2-standard-4",
+          "provisioningModel": "SPOT",
+          "bootDisk": {
+            "image": "projects/ml-images/global/images/c0-deeplearning-common-cu123-v20240922-debian-11-py310",
+            "sizeGb": 50
+          }
+        }
+      }
+    ],
+    "network": {
+      "networkInterfaces": [
+        {
+          "network": "projects/azure-openai-test/global/networks/whisper-private-network",
+          "subnetwork": "projects/azure-openai-test/regions/us-central1/subnetworks/whisper-private-network-vpc"
+        }
+      ]
+    },
+    "location": {
+      "allowedLocations": ["regions/us-central1"]
+    }
+  },
+  "logsPolicy": {
+    "destination": "CLOUD_LOGGING"
+  }
+}
